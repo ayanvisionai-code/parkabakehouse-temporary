@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --color-parka-cream: #f6efe6;
+  --color-parka-terracotta: #c25b42;
+  --color-parka-brown: #452415;
+  --color-parka-peach: #e2a88e;
+  --color-parka-sand: #e6dacc;
+  --color-parka-text: #341f17;
+  --color-parka-clay: #8e4733;
+  --color-parka-paper: #fcf9f2;
+
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-playfair), serif;
+  --font-accent: var(--font-accent), cursive;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-parka-cream);
+    color: var(--color-parka-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .handwritten {
+    font-family: var(--font-accent);
+  }
+}

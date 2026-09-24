@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { MapPin, Clock } from "lucide-react";
 
 export default function Locations() {
   const locations = [
@@ -28,28 +27,29 @@ export default function Locations() {
   ];
 
   return (
-    <div className="min-h-screen bg-parka-cream relative">
+    <div className="min-h-screen bg-parka-cream relative overflow-hidden">
       {/* Decorative doodle background */}
-      <div className="absolute top-40 left-10 opacity-10 pointer-events-none hidden lg:block">
-        <svg width="200" height="200" viewBox="0 0 100 100" fill="none" stroke="var(--color-parka-terracotta)" strokeWidth="1"><circle cx="50" cy="50" r="40"/><path d="M50 10 L50 90 M10 50 L90 50"/></svg>
+      <div className="absolute top-40 left-10 opacity-20 pointer-events-none hidden lg:block text-parka-peach">
+        <svg width="250" height="250" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="50" cy="50" r="40" strokeDasharray="4 4" /><path d="M50 10 L50 90 M10 50 L90 50"/></svg>
       </div>
 
       {/* Page Header */}
-      <div className="py-24 text-center px-4 max-w-4xl mx-auto">
-        <span className="font-accent text-3xl text-parka-terracotta mb-4 block -rotate-2">Find your Parka</span>
-        <h1 className="text-6xl md:text-7xl font-display text-parka-brown mb-6">Our Locations</h1>
-        <p className="text-parka-text/80 text-lg md:text-xl font-light leading-relaxed">
+      <div className="pt-32 pb-24 text-center px-6 lg:px-12 max-w-[1440px] mx-auto relative z-10">
+        <span className="font-accent text-4xl text-parka-terracotta mb-6 block -rotate-3 drop-shadow-sm">Find your Parka</span>
+        <h1 className="text-7xl md:text-8xl lg:text-9xl font-display text-parka-brown mb-8 uppercase tracking-tight">Locations</h1>
+        <p className="text-parka-text/70 text-xl md:text-2xl font-light leading-relaxed max-w-2xl mx-auto">
           Two beautiful spaces designed for community, coffee, and comfort. Roll in dough with us across the UAE.
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 space-y-32">
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-12 pb-40 space-y-40 relative z-10">
         {locations.map((loc, index) => (
-          <div key={loc.id} className={`flex flex-col ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-24 items-center`}>
-            {/* Image Side */}
+          <div key={loc.id} className={`flex flex-col ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-16 lg:gap-32 items-center`}>
+            
+            {/* Editorial Image Side */}
             <div className="w-full lg:w-1/2 relative">
-              <div className="absolute inset-0 bg-parka-terracotta/20 translate-x-4 translate-y-4"></div>
-              <div className="relative aspect-[4/5] w-full overflow-hidden shadow-2xl bg-parka-sand">
+              <div className="absolute inset-0 bg-parka-peach/20 translate-x-6 translate-y-6 hidden md:block"></div>
+              <div className="relative aspect-[4/5] w-full overflow-hidden shadow-2xl bg-parka-sand z-10">
                 <Image 
                   src={loc.image}
                   alt={loc.name}
@@ -58,45 +58,38 @@ export default function Locations() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
+              <div className="absolute -bottom-8 -right-8 z-20 opacity-80 hidden md:block text-parka-terracotta">
+                 <svg width="100" height="100" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20,100 Q80,20 180,100 T180,180" /></svg>
+              </div>
             </div>
 
             {/* Content Side */}
             <div className="w-full lg:w-1/2 flex flex-col justify-center">
-              <span className="uppercase tracking-widest text-sm text-parka-terracotta font-medium mb-4 block">
+              <span className="uppercase tracking-[0.2em] text-sm text-parka-terracotta font-medium mb-6 block">
                 {loc.city}
               </span>
-              <h2 className="text-5xl md:text-6xl font-display text-parka-brown mb-6">{loc.name}</h2>
-              <p className="text-xl text-parka-text/70 mb-10 leading-relaxed font-light">
+              <h2 className="text-6xl md:text-7xl font-display text-parka-brown mb-8 leading-none italic pr-4">{loc.name}</h2>
+              <p className="text-2xl text-parka-text/70 mb-12 leading-relaxed font-light">
                 {loc.description}
               </p>
               
-              <div className="space-y-8 mb-12">
-                <div className="flex items-start gap-5">
-                  <div className="w-10 h-10 rounded-full bg-parka-paper flex items-center justify-center shrink-0 border border-parka-sand">
-                    <MapPin className="w-5 h-5 text-parka-terracotta" />
-                  </div>
-                  <div className="pt-2">
-                    <h4 className="font-display text-2xl text-parka-brown mb-2">Address</h4>
-                    <p className="text-parka-text/70 leading-relaxed">{loc.address}</p>
-                  </div>
+              <div className="space-y-10 mb-16 border-l-2 border-parka-terracotta/30 pl-8">
+                <div>
+                  <h4 className="uppercase tracking-[0.15em] text-xs font-bold text-parka-terracotta mb-3">Address</h4>
+                  <p className="text-parka-brown text-xl leading-relaxed">{loc.address}</p>
                 </div>
-                <div className="flex items-start gap-5">
-                  <div className="w-10 h-10 rounded-full bg-parka-paper flex items-center justify-center shrink-0 border border-parka-sand">
-                    <Clock className="w-5 h-5 text-parka-terracotta" />
-                  </div>
-                  <div className="pt-2">
-                    <h4 className="font-display text-2xl text-parka-brown mb-2">Hours</h4>
-                    <p className="text-parka-text/70">{loc.hours}</p>
-                  </div>
+                <div>
+                  <h4 className="uppercase tracking-[0.15em] text-xs font-bold text-parka-terracotta mb-3">Hours</h4>
+                  <p className="text-parka-brown text-xl">{loc.hours}</p>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-6">
                 <a 
                   href={loc.mapUrl} 
                   target="_blank" 
                   rel="noreferrer"
-                  className="px-10 py-4 bg-parka-brown text-parka-cream font-medium text-center hover:bg-parka-terracotta transition-colors uppercase tracking-widest text-sm"
+                  className="px-10 py-5 bg-parka-brown text-parka-cream font-medium text-center hover:bg-parka-terracotta transition-colors uppercase tracking-[0.15em] text-sm rounded-sm"
                 >
                   Get Directions
                 </a>
@@ -104,12 +97,13 @@ export default function Locations() {
                   href="https://linktr.ee/parkabakehouse" 
                   target="_blank" 
                   rel="noreferrer"
-                  className="px-10 py-4 bg-parka-paper border border-parka-brown text-parka-brown font-medium text-center hover:bg-parka-sand transition-colors uppercase tracking-widest text-sm"
+                  className="px-10 py-5 bg-transparent border border-parka-brown text-parka-brown font-medium text-center hover:bg-parka-brown hover:text-parka-cream transition-colors uppercase tracking-[0.15em] text-sm rounded-sm"
                 >
                   Order / Pick Up
                 </a>
               </div>
             </div>
+
           </div>
         ))}
       </div>
